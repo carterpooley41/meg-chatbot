@@ -2,35 +2,146 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Meg Chatbot</title>
+<title>Mini Shop</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body {
 font-family: Arial, sans-serif;
-background: #f5f5f5;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: flex-start;
-min-height: 100vh;
+background: #f4f4f4;
 margin: 0;
-padding-top: 30px;
+padding: 20px;
+}
+h1 {
+text-align: center;
+}
+.products {
+display: flex;
+gap: 20px;
+justify-content: center;
+flex-wrap: wrap;
+}
+.product {
+background: white;
+padding: 15px;
+border: 1px solid #ccc;
+border-radius: 8px;
+width: 200px;
+text-align: center;
+}
+button {
+padding: 8px 15px;
+margin-top: 10px;
+cursor: pointer;
+background: #007bff;
+color: white;
+border: none;
+border-radius: 5px;
+}
+#cart {
+position: fixed;
+top: 20px;
+right: 20px;
+background: #28a745;
+color: white;
+padding: 10px 15px;
+border-radius: 5px;
+cursor: pointer;
+}
+
+/* Popup Email Form */
+.popup {
+display: none;
+position: fixed;
+top: 30%;
+left: 50%;
+transform: translate(-50%, -50%);
+background: white;
+padding: 30px;
+border: 2px solid #555;
+border-radius: 10px;
+z-index: 10;
+}
+.popup input {
+padding: 8px;
+margin-top: 10px;
+width: 100%;
+}
+.popup button {
+margin-top: 10px;
+width: 100%;
+}
+.overlay {
+display: none;
+position: fixed;
+top: 0; left: 0;
+width: 100%; height: 100%;
+background: rgba(0,0,0,0.5);
+z-index: 5;
 }
 </style>
 </head>
 <body>
 
-<!-- No need for a custom div, the widget injects itself -->
+<h1>Welcome to Mini Shop</h1>
 
-<!-- AI Bot Script -->
-<script src="https://testmyprompt.com/widget/681158a2fc6d93c4a7eea80a/widget.js"></script>
+<div id="cart" onclick="alert('Cart feature coming soon!')">🛒 Cart (0)</div>
+
+<div class="products">
+<div class="product">
+<h3>Sticker Pack</h3>
+<p>$5.00</p>
+<button onclick="addToCart()">Add to Cart</button>
+</div>
+<div class="product">
+<h3>Custom Mug</h3>
+<p>$12.00</p>
+<button onclick="addToCart()">Add to Cart</button>
+</div>
+<div class="product">
+<h3>Poster Print</h3>
+<p>$8.00</p>
+<button onclick="addToCart()">Add to Cart</button>
+</div>
+</div>
+
+<!-- Email Signup Popup -->
+<div class="overlay" id="overlay"></div>
+<div class="popup" id="popup">
+<h2>Get 10% Off!</h2>
+<p>Sign up for updates and get a discount code:</p>
+<input type="email" placeholder="Enter your email" />
+<button onclick="closePopup()">Sign Up</button>
+</div>
+
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-window.AIChatWidget.init({
-widgetId: "681158a2fc6d93c4a7eea80a"
-});
-});
-</script>
+let cartCount = 0;
 
+function addToCart() {
+cartCount++;
+document.getElementById('cart').innerText = `🛒 Cart (${cartCount})`;
+}
+
+function showPopup() {
+document.getElementById('popup').style.display = 'block';
+document.getElementById('overlay').style.display = 'block';
+}
+
+function closePopup() {
+document.getElementById('popup').style.display = 'none';
+document.getElementById('overlay').style.display = 'none';
+}
+
+// Show popup after 5 seconds
+setTimeout(showPopup, 5000);
+</script>
+<script src="https://testmyprompt.com/widget/681150a2fc6d93c4a7eea80a/widget.js"></script>
+<script>
+  // Initialize the widget after the script loads
+  document.addEventListener('DOMContentLoaded', function() {
+    window.AIChatWidget.init({
+      widgetId: "681150a2fc6d93c4a7eea80a"
+    });
+  });
+</script>
 </body>
 </html>
