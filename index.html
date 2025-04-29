@@ -141,16 +141,10 @@ window.AIChatWidget.init({
 widgetId: "681158a2fc6d93c4a7eea80a"
 });
 
-const tryFocusIframe = () => {
+setTimeout(() => {
 const iframe = document.querySelector('iframe');
-if (iframe) {
-iframe.focus();
-} else {
-setTimeout(tryFocusIframe, 500); 
-}
-};
-
-tryFocusIframe();
+if (iframe) iframe.focus();
+}, 1500);
 });
 </script>
 </body>
