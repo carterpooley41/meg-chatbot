@@ -134,14 +134,26 @@ document.getElementById('overlay').style.display = 'none';
 // Show popup after 5 seconds
 setTimeout(showPopup, 5000);
 </script>
-<script src="https://testmyprompt.com/widget/681150a2fc6d93c4a7eea80a/widget.js"></script>
+<!-- Add this to your HTML page, preferably before the closing </body> tag -->
+<script src="https://testmyprompt.com/widget/681158a2fc6d93c4a7eea80a/widget.js"></script>
 <script>
-  // Initialize the widget after the script loads
-  document.addEventListener('DOMContentLoaded', function() {
-    window.AIChatWidget.init({
-      widgetId: "681150a2fc6d93c4a7eea80a"
-    });
-  });
+document.addEventListener('DOMContentLoaded', function () {
+window.AIChatWidget.init({
+widgetId: "681158a2fc6d93c4a7eea80a"
+});
+
+// Try to auto-focus the iframe once it's loaded
+const tryFocusIframe = () => {
+const iframe = document.querySelector('iframe');
+if (iframe) {
+iframe.focus();
+} else {
+setTimeout(tryFocusIframe, 500); // Try again if iframe isn't ready
+}
+};
+
+tryFocusIframe();
+});
 </script>
 </body>
 </html>
